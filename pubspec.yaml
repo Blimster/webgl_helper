@@ -1,0 +1,11 @@
+name: webgl_helper
+version: 0.1.0
+author: Oliver Damm <oliver.damm@gmx.de>
+description: A helper library for the WebGL API
+homepage: https://github.com/blimster/webgl_helper
+environment:
+  sdk: ">=1.4.0 <2.0.0"
+dependencies:
+  vector_math: ^1.4.7
+dev_dependencies:
+  browser: ^0.10.0+2
