@@ -93,7 +93,7 @@ void glEnableBlend(bool enable) => _enable(enable, WebGL.RenderingContext.BLEND)
 void gluDrawArrays(ShaderProgram program, Buffer buffer, {DrawMode drawMode: DrawMode.TRIANGLES,
 Map<String, UniformSetter> uniformSetters: null, Map<String, VertexAttribSetter> vertexAttribSetters: null}) {
   program.use();
-  buffer?.vertexAttribLocationNames.forEach((name) =>
+  buffer.vertexAttribLocationNames.forEach((name) =>
       program.getVertexAttribLocation(name).setPointer(buffer));
   uniformSetters?.forEach((name, setter) => setter(program.getUniform(name)));
   vertexAttribSetters?.forEach((name, setter) => setter(program.getVertexAttribLocation(name)));

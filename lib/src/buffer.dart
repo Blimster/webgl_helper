@@ -91,7 +91,7 @@ class Buffer {
         }
 
         if (_numOfVertices == null) {
-          _numOfVertices = vertexData.length / size;
+          _numOfVertices = vertexData.length ~/ size;
         } else {
           if (_numOfVertices != vertexData.length / size) {
             throw new ArgumentError(
