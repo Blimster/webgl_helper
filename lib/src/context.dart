@@ -27,14 +27,23 @@ typedef UniformSetter(UniformLocation);
 
 typedef VertexAttribSetter(VertexAttribLocation);
 
+const alpha = 'alpha';
+const depth = 'depth';
+const stencil = 'stencil';
+const antialias = 'antialias';
+const premultipliedAlpha = 'premultipliedAlpha';
+const preserveDrawingBuffer = 'preserveDrawingBuffer';
+const preferLowPowerToHighPerformance = 'preferLowPowerToHighPerformance';
+const failIfMajorPerformanceCaveat = 'failIfMajorPerformanceCaveat';
+
 WebGL.RenderingContext get glContext => _context;
 
-void glInit(Html.CanvasElement canvas) {
+void glInit(Html.CanvasElement canvas, [Map attributes]) {
   _context = canvas.getContext3d();
   if (_context == null) {
-    _context = canvas.getContext('webgl');
+    _context = canvas.getContext('webgl', attributes);
     if (_context == null) {
-      _context = canvas.getContext('experimental-webgl');
+      _context = canvas.getContext('experimental-webgl', attributes);
     }
   }
 }
