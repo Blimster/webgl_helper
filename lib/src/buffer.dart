@@ -54,7 +54,7 @@ class Buffer {
     var vertexDataList = [];
 
     if (data is Map) {
-      Map dataMap = data as Map;
+      Map dataMap = data;
       dataMap.forEach((locName, locData) {
         var size = 4;
         var normalized = false;
@@ -119,7 +119,7 @@ class Buffer {
       }
 
       bind();
-      _context.bufferByteData(_target, DataType._createBuffer(type, bufferData), usage.glConst);
+      _context.bufferData(_target, DataType._createBuffer(type, bufferData as List<num>), usage.glConst);
     }
     else {
       throw new ArgumentError('expected data to be of type Map!');
