@@ -55,8 +55,8 @@ TypedData.Uint8List glReadPixel(int x, int y) {
       y,
       1,
       1,
-      WebGL.RenderingContext.RGBA,
-      WebGL.RenderingContext.UNSIGNED_BYTE,
+      WebGL.WebGL.RGBA,
+      WebGL.WebGL.UNSIGNED_BYTE,
       result);
   return result;
 }
@@ -91,13 +91,13 @@ void glFrontFace(FrontFaceMode mode) => _context.frontFace(mode.glConst);
 
 void glCullFace(CullFaceMode mode) => _context.cullFace(mode.glConst);
 
-void glEnableDepthTest(bool enable) => _enable(enable, WebGL.RenderingContext.DEPTH_TEST);
+void glEnableDepthTest(bool enable) => _enable(enable, WebGL.WebGL.DEPTH_TEST);
 
-void glEnableCullFace(bool enable) => _enable(enable, WebGL.RenderingContext.CULL_FACE);
+void glEnableCullFace(bool enable) => _enable(enable, WebGL.WebGL.CULL_FACE);
 
-void glEnablePolygonOffset(bool enable) => _enable(enable, WebGL.RenderingContext.POLYGON_OFFSET_FILL);
+void glEnablePolygonOffset(bool enable) => _enable(enable, WebGL.WebGL.POLYGON_OFFSET_FILL);
 
-void glEnableBlend(bool enable) => _enable(enable, WebGL.RenderingContext.BLEND);
+void glEnableBlend(bool enable) => _enable(enable, WebGL.WebGL.BLEND);
 
 void gluDrawArrays(ShaderProgram program, Buffer buffer, {DrawMode drawMode: DrawMode.TRIANGLES,
 Map<String, UniformSetter> uniformSetters: null, Map<String, VertexAttribSetter> vertexAttribSetters: null}) {

@@ -30,7 +30,7 @@ abstract class Shader {
     _context.shaderSource(_shader, source);
     _context.compileShader(_shader);
 
-    final compileStatus = _context.getShaderParameter(_shader, WebGL.COMPILE_STATUS);
+    final compileStatus = _context.getShaderParameter(_shader, WebGL.WebGL.COMPILE_STATUS);
     if (!compileStatus) {
       throw new StateError(_context.getShaderInfoLog(_shader));
     }
@@ -40,13 +40,13 @@ abstract class Shader {
 
 class VertexShader extends Shader {
 
-  VertexShader(String source) : super(WebGL.VERTEX_SHADER, source);
+  VertexShader(String source) : super(WebGL.WebGL.VERTEX_SHADER, source);
 
 }
 
 class FragmentShader extends Shader {
 
-  FragmentShader(String source) : super(WebGL.FRAGMENT_SHADER, source);
+  FragmentShader(String source) : super(WebGL.WebGL.FRAGMENT_SHADER, source);
 
 }
 

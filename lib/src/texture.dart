@@ -12,10 +12,10 @@ class Texture {
 
   void data(Html.ImageElement image) {
     bind();
-    _context.pixelStorei(WebGL.UNPACK_FLIP_Y_WEBGL, 1);
-    _context.texImage2D(WebGL.TEXTURE_2D, 0, WebGL.RGBA, WebGL.RGBA, WebGL.UNSIGNED_BYTE, image);
-    _context.texParameteri(WebGL.TEXTURE_2D, WebGL.TEXTURE_MIN_FILTER, WebGL.NEAREST);
-    _context.texParameteri(WebGL.TEXTURE_2D, WebGL.TEXTURE_MAG_FILTER, WebGL.NEAREST);
+    _context.pixelStorei(WebGL.WebGL.UNPACK_FLIP_Y_WEBGL, 1);
+    _context.texImage2D(WebGL.WebGL.TEXTURE_2D, 0, WebGL.WebGL.RGBA, WebGL.WebGL.RGBA, WebGL.WebGL.UNSIGNED_BYTE, image);
+    _context.texParameteri(WebGL.WebGL.TEXTURE_2D, WebGL.WebGL.TEXTURE_MIN_FILTER, WebGL.WebGL.NEAREST);
+    _context.texParameteri(WebGL.WebGL.TEXTURE_2D, WebGL.WebGL.TEXTURE_MAG_FILTER, WebGL.WebGL.NEAREST);
     unbind();
 
     _loaded = true;
@@ -24,11 +24,11 @@ class Texture {
   bool get loaded => _loaded;
 
   void bind() {
-    _context.bindTexture(WebGL.TEXTURE_2D, _texture);
+    _context.bindTexture(WebGL.WebGL.TEXTURE_2D, _texture);
   }
 
   void unbind() {
-    _context.bindTexture(WebGL.TEXTURE_2D, null);
+    _context.bindTexture(WebGL.WebGL.TEXTURE_2D, null);
   }
 
   void activateUnitAndBindIfLoaded(TextureUnit unit, [UniformLocation uniform]) {

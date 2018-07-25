@@ -3,9 +3,13 @@ version: 0.3.0
 author: Oliver Damm <oliver.damm@gmx.de>
 description: A helper library for the WebGL API
 homepage: https://github.com/blimster/webgl_helper
+
 environment:
-  sdk: ">=1.20.1 <2.0.0"
+  sdk: '>=2.0.0-dev.69.0 <3.0.0'
+
 dependencies:
-  vector_math: "^2.0.0"
+  vector_math: "^2.0.8"
+
 dev_dependencies:
-  browser: "^0.10.0+2"
+  build_runner: ^0.9.2
+  build_web_compilers: ^0.4.1
