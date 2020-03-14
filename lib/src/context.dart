@@ -21,7 +21,7 @@
  */
 part of webgl_helper;
 
-WebGL.RenderingContext _context;
+web_gl.RenderingContext _context;
 
 typedef UniformSetter = void Function(UniformLocation);
 
@@ -36,9 +36,9 @@ const preserveDrawingBuffer = 'preserveDrawingBuffer';
 const preferLowPowerToHighPerformance = 'preferLowPowerToHighPerformance';
 const failIfMajorPerformanceCaveat = 'failIfMajorPerformanceCaveat';
 
-WebGL.RenderingContext get glContext => _context;
+web_gl.RenderingContext get glContext => _context;
 
-void glInit(Html.CanvasElement canvas, [Map attributes]) {
+void glInit(html.CanvasElement canvas, [Map attributes]) {
   _context = canvas.getContext3d();
   if (_context == null) {
     _context = canvas.getContext('webgl', attributes);
@@ -48,9 +48,9 @@ void glInit(Html.CanvasElement canvas, [Map attributes]) {
   }
 }
 
-TypedData.Uint8List glReadPixel(int x, int y) {
-  TypedData.Uint8List result = TypedData.Uint8List(4);
-  _context.readPixels(x, y, 1, 1, WebGL.WebGL.RGBA, WebGL.WebGL.UNSIGNED_BYTE, result);
+typed_data.Uint8List glReadPixel(int x, int y) {
+  typed_data.Uint8List result = typed_data.Uint8List(4);
+  _context.readPixels(x, y, 1, 1, web_gl.WebGL.RGBA, web_gl.WebGL.UNSIGNED_BYTE, result);
   return result;
 }
 
@@ -84,16 +84,16 @@ void glFrontFace(FrontFaceMode mode) => _context.frontFace(mode.glConst);
 
 void glCullFace(CullFaceMode mode) => _context.cullFace(mode.glConst);
 
-void glEnableDepthTest(bool enable) => _enable(enable, WebGL.WebGL.DEPTH_TEST);
+void glEnableDepthTest(bool enable) => _enable(enable, web_gl.WebGL.DEPTH_TEST);
 
-void glEnableCullFace(bool enable) => _enable(enable, WebGL.WebGL.CULL_FACE);
+void glEnableCullFace(bool enable) => _enable(enable, web_gl.WebGL.CULL_FACE);
 
-void glEnablePolygonOffset(bool enable) => _enable(enable, WebGL.WebGL.POLYGON_OFFSET_FILL);
+void glEnablePolygonOffset(bool enable) => _enable(enable, web_gl.WebGL.POLYGON_OFFSET_FILL);
 
-void glEnableBlend(bool enable) => _enable(enable, WebGL.WebGL.BLEND);
+void glEnableBlend(bool enable) => _enable(enable, web_gl.WebGL.BLEND);
 
 void gluDrawArrays(ShaderProgram program, Buffer buffer,
-    {DrawMode drawMode: DrawMode.TRIANGLES,
+    {DrawMode drawMode = DrawMode.TRIANGLES,
     Map<String, UniformSetter> uniformSetters,
     Map<String, VertexAttribSetter> vertexAttribSetters}) {
   program.use();

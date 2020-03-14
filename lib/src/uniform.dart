@@ -23,7 +23,7 @@ part of webgl_helper;
 
 class UniformLocation {
   String _name;
-  WebGL.UniformLocation _location;
+  web_gl.UniformLocation _location;
 
   UniformLocation(this._name, this._location);
 
@@ -49,8 +49,8 @@ class UniformLocation {
     _context.uniform4f(_location, x, y, z, w);
   }
 
-  void setMatrix4(VecMath.Matrix4 matrix) {
-    TypedData.Float32List array = TypedData.Float32List(16);
+  void setMatrix4(vec_math.Matrix4 matrix) {
+    typed_data.Float32List array = typed_data.Float32List(16);
     matrix.copyIntoArray(array);
     _context.uniformMatrix4fv(_location, false, array);
   }

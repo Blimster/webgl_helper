@@ -22,10 +22,10 @@
 library webgl_helper;
 
 import 'dart:math';
-import 'dart:web_gl' as WebGL;
-import 'dart:typed_data' as TypedData;
-import 'dart:html' as Html;
-import 'package:vector_math/vector_math.dart' as VecMath;
+import 'dart:web_gl' as web_gl;
+import 'dart:typed_data' as typed_data;
+import 'dart:html' as html;
+import 'package:vector_math/vector_math.dart' as vec_math;
 
 export 'package:vector_math/vector_math.dart';
 

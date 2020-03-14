@@ -26,9 +26,9 @@ class Buffer {
   static final String NORMALIZED = "normalized";
   static final String DATA = "data";
 
-  static Map<int, WebGL.Buffer> _boundBuffer = Map<int, WebGL.Buffer>();
+  static Map<int, web_gl.Buffer> _boundBuffer = Map<int, web_gl.Buffer>();
 
-  WebGL.Buffer _buffer;
+  web_gl.Buffer _buffer;
   int _target;
   DataType _type;
   int _numOfVertices;

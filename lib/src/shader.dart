@@ -22,14 +22,14 @@
 part of webgl_helper;
 
 abstract class Shader {
-  WebGL.Shader _shader;
+  web_gl.Shader _shader;
 
   Shader(int shaderType, String source) {
     _shader = _context.createShader(shaderType);
     _context.shaderSource(_shader, source);
     _context.compileShader(_shader);
 
-    final compileStatus = _context.getShaderParameter(_shader, WebGL.WebGL.COMPILE_STATUS);
+    final compileStatus = _context.getShaderParameter(_shader, web_gl.WebGL.COMPILE_STATUS);
     if (!compileStatus) {
       throw StateError(_context.getShaderInfoLog(_shader));
     }
@@ -37,15 +37,15 @@ abstract class Shader {
 }
 
 class VertexShader extends Shader {
-  VertexShader(String source) : super(WebGL.WebGL.VERTEX_SHADER, source);
+  VertexShader(String source) : super(web_gl.WebGL.VERTEX_SHADER, source);
 }
 
 class FragmentShader extends Shader {
-  FragmentShader(String source) : super(WebGL.WebGL.FRAGMENT_SHADER, source);
+  FragmentShader(String source) : super(web_gl.WebGL.FRAGMENT_SHADER, source);
 }
 
 class ShaderProgram {
-  WebGL.Program _program;
+  web_gl.Program _program;
   Map<String, VertexAttribLocation> _attributes = Map<String, VertexAttribLocation>();
   Map<String, UniformLocation> _uniforms = Map<String, UniformLocation>();
 
