@@ -21,11 +21,11 @@
  */
 part of webgl_helper;
 
-WebGL.RenderingContext _context = null;
+WebGL.RenderingContext _context;
 
-typedef UniformSetter(UniformLocation);
+typedef UniformSetter = void Function(UniformLocation);
 
-typedef VertexAttribSetter(VertexAttribLocation);
+typedef VertexAttribSetter = void Function(VertexAttribLocation);
 
 const alpha = 'alpha';
 const depth = 'depth';
@@ -49,15 +49,8 @@ void glInit(Html.CanvasElement canvas, [Map attributes]) {
 }
 
 TypedData.Uint8List glReadPixel(int x, int y) {
-  TypedData.Uint8List result = new TypedData.Uint8List(4);
-  _context.readPixels(
-      x,
-      y,
-      1,
-      1,
-      WebGL.WebGL.RGBA,
-      WebGL.WebGL.UNSIGNED_BYTE,
-      result);
+  TypedData.Uint8List result = TypedData.Uint8List(4);
+  _context.readPixels(x, y, 1, 1, WebGL.WebGL.RGBA, WebGL.WebGL.UNSIGNED_BYTE, result);
   return result;
 }
 
@@ -99,11 +92,12 @@ void glEnablePolygonOffset(bool enable) => _enable(enable, WebGL.WebGL.POLYGON_O
 
 void glEnableBlend(bool enable) => _enable(enable, WebGL.WebGL.BLEND);
 
-void gluDrawArrays(ShaderProgram program, Buffer buffer, {DrawMode drawMode: DrawMode.TRIANGLES,
-Map<String, UniformSetter> uniformSetters: null, Map<String, VertexAttribSetter> vertexAttribSetters: null}) {
+void gluDrawArrays(ShaderProgram program, Buffer buffer,
+    {DrawMode drawMode: DrawMode.TRIANGLES,
+    Map<String, UniformSetter> uniformSetters,
+    Map<String, VertexAttribSetter> vertexAttribSetters}) {
   program.use();
-  buffer.vertexAttribLocationNames.forEach((name) =>
-      program.getVertexAttribLocation(name).setPointer(buffer));
+  buffer.vertexAttribLocationNames.forEach((name) => program.getVertexAttribLocation(name).setPointer(buffer));
   uniformSetters?.forEach((name, setter) => setter(program.getUniform(name)));
   vertexAttribSetters?.forEach((name, setter) => setter(program.getVertexAttribLocation(name)));
   _context.drawArrays(drawMode.glConst, 0, buffer.numOfVertices);
@@ -112,10 +106,7 @@ Map<String, UniformSetter> uniformSetters: null, Map<String, VertexAttribSetter>
 void _enable(bool enable, int cap) {
   if (enable) {
     _context.enable(cap);
-  }
-  else {
+  } else {
     _context.disable(cap);
   }
 }
-
-

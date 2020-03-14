@@ -26,7 +26,7 @@ class Buffer {
   static final String NORMALIZED = "normalized";
   static final String DATA = "data";
 
-  static Map<int, WebGL.Buffer> _boundBuffer = new Map<int, WebGL.Buffer>();
+  static Map<int, WebGL.Buffer> _boundBuffer = Map<int, WebGL.Buffer>();
 
   WebGL.Buffer _buffer;
   int _target;
@@ -64,7 +64,7 @@ class Buffer {
       } else if (locData is List) {
         data = locData;
       } else {
-        throw new ArgumentError('expected value of key $locName to of type List or Map!');
+        throw ArgumentError('expected value of key $locName to of type List or Map!');
       }
 
       final vertexData = <double>[];
@@ -81,7 +81,7 @@ class Buffer {
         } else if (elem is double) {
           vertexData.add(elem);
         } else {
-          throw new ArgumentError('vertex data is not of type num or List!');
+          throw ArgumentError('vertex data is not of type num or List!');
         }
       }
 
@@ -89,16 +89,16 @@ class Buffer {
         _numOfVertices = vertexData.length ~/ size;
       } else {
         if (_numOfVertices != vertexData.length / size) {
-          throw new ArgumentError('the number of per vertex data must be the same for every vertex attrib location!');
+          throw ArgumentError('the number of per vertex data must be the same for every vertex attrib location!');
         }
       }
 
       vertexDataList.add(vertexData);
-      _bufferDataInfos
-          .add(new _BufferDataInfo(locName, size, normalized, _bufferDataInfos.isEmpty ? 0 : _bufferDataInfos.map((p) => p.size).reduce((s1, s2) => s1 + s2)));
+      _bufferDataInfos.add(_BufferDataInfo(locName, size, normalized,
+          _bufferDataInfos.isEmpty ? 0 : _bufferDataInfos.map((p) => p.size).reduce((s1, s2) => s1 + s2)));
     });
 
-    final bufferData = new List<double>(vertexDataList.map((v) => v.length).reduce((l1, l2) => l1 + l2));
+    final bufferData = List<double>(vertexDataList.map((v) => v.length).reduce((l1, l2) => l1 + l2));
     final sumOfSizes = _bufferDataInfos.map((p) => p.size).reduce((s1, s2) => s1 + s2);
     var offset = 0;
     for (var p = 0; p < _bufferDataInfos.length; p++) {

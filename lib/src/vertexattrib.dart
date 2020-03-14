@@ -22,11 +22,10 @@
 part of webgl_helper;
 
 class VertexAttribLocation {
-
   String _name;
   int _index;
 
-  VertexAttribLocation(String this._name, int this._index);
+  VertexAttribLocation(this._name, this._index);
 
   String get name => _name;
 
@@ -44,9 +43,8 @@ class VertexAttribLocation {
         buffer.bind();
         enableVertexAttribArray();
         var overallSize = buffer._bufferDataInfos.map((p) => p.size).reduce((s1, s2) => s1 + s2);
-        _context.vertexAttribPointer(
-            _index, dataInfo.size, buffer._type.glConst, dataInfo.normalized, overallSize * buffer._type.dataSize,
-            dataInfo.offset * buffer._type.dataSize);
+        _context.vertexAttribPointer(_index, dataInfo.size, buffer._type.glConst, dataInfo.normalized,
+            overallSize * buffer._type.dataSize, dataInfo.offset * buffer._type.dataSize);
       }
     });
   }
@@ -60,5 +58,4 @@ class VertexAttribLocation {
     disableVertexAttribArray();
     _context.vertexAttrib4f(_index, x, y, z, w);
   }
-
 }

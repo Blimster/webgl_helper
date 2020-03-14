@@ -1,8 +1,7 @@
 part of webgl_helper;
 
 class Framebuffer {
-
-  static Framebuffer _boundFramebuffer = null;
+  static Framebuffer _boundFramebuffer;
 
   WebGL.Framebuffer _framebuffer;
 
@@ -27,11 +26,9 @@ class Framebuffer {
     _context.framebufferRenderbuffer(
         WebGL.WebGL.FRAMEBUFFER, attachment.glConst, WebGL.WebGL.RENDERBUFFER, renderbuffer._renderbuffer);
   }
-
 }
 
 class Renderbuffer {
-
   static Renderbuffer _boundRenderbuffer = null;
   WebGL.Renderbuffer _renderbuffer;
 
@@ -55,6 +52,4 @@ class Renderbuffer {
     bind();
     _context.renderbufferStorage(WebGL.WebGL.RENDERBUFFER, internalFormat.glConst, width, height);
   }
-
 }
-

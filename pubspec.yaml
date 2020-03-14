@@ -1,7 +1,6 @@
 name: webgl_helper
-version: 0.4.0
-author: Oliver Damm <oliver.damm@gmx.de>
-description: A helper library for the WebGL API
+version: 0.4.0+1
+description: A helper library for the WebGL API. This is not a scene engine but a thin layer over WebGL.
 homepage: https://github.com/blimster/webgl_helper
 
 environment:
